@@ -13,9 +13,6 @@ int main()
     // First find larger number between a and b
     largest = (a > b) ? ((a > c) ? a : c)  : ((b > c) ? b : c);
 
-    // Compare that number with c
-    largest = (largest > c) ? largest : c;
-
     printf("Largest number = %d", largest);
 
     return 0;
