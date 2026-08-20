@@ -11,6 +11,13 @@ int main()
     scanf("%f %f", &num1, &num2);
 
     printf("Enter operation (+, -, *, /): ");
+    // " %c" => The single whitespace before %c stores the enter key we press after writing num1 and num2 in terminal.
+    // If we do not leave 1 whitespace then the enter key is read as choice and hence the program terminates before we give choice input.
+    // Thus, either use a whitespace before %c or use a buffer variable to store that whitespace : 
+        // char buffer;
+        // scanf("%c", &buffer);
+        // scanf("%c", &choice);
+
     scanf(" %c", &choice);
 
     switch(choice)
