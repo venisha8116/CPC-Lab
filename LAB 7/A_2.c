@@ -4,10 +4,10 @@
 
 int main()
 {
-    int month;
+    int month, year;
 
     printf("Enter month number (1-12): ");
-    scanf("%d", &month);
+    scanf("%d %d", &month, &year);
 
     switch(month)
     {
@@ -32,7 +32,10 @@ int main()
 
         // February
         case 2:
-            printf("28 or 29 days");
+            if(((year%4==0) || (year%400== 0)) && (year%100!=0))
+                printf("29 days");
+            else
+                printf("28 days");
             break;
 
         default:
