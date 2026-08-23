@@ -10,8 +10,7 @@ int main()
     printf("Enter three numbers: ");
     scanf("%d %d %d", &a, &b, &c);
 
-    // First find larger number between a and b
-    largest = (a > b) ? (a)  : (b);
+    largest = (a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c);
 
     printf("Largest number = %d", largest);
 
