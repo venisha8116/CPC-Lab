@@ -40,33 +40,6 @@ flowchart TD
     H --> I["Print Sum"]
     I --> J["End"]
 ```
-
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, first, last, temp, sum;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    temp = num;
-    last = num % 10;  // Get last digit
-    
-    // Find first digit by repeatedly dividing
-    while(temp >= 10){
-        temp = temp / 10;
-    }
-    first = temp;
-    
-    sum = first + last;
-    printf("Sum of first and last digit: %d\n", sum);
-    
-    return 0;
-}
-```
-
 ---
 
 ### **A_2: Sum and Average of Multiple Numbers**
@@ -98,40 +71,7 @@ flowchart TD
     E --> F["count = count + 1"]
     F --> G["Ask continue?"]
     G -->|Yes| C
-    G -->|No| H["avg = sum / count"]
-    H --> I["Print sum and avg"]
-    I --> J["End"]
-```
 
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, choice, count;
-    float sum, avg;
-    
-    sum = 0;
-    count = 0;
-    
-    // Accept numbers until user wants to stop
-    while(1){
-        printf("Enter a number: ");
-        scanf("%d", &num);
-        sum = sum + num;
-        count = count + 1;
-        
-        printf("Do you want to continue? (1=yes, 0=no): ");
-        scanf("%d", &choice);
-        if(choice == 0) break;
-    }
-    
-    avg = sum / count;
-    printf("Sum: %.2f\n", sum);
-    printf("Average: %.2f\n", avg);
-    
-    return 0;
-}
 ```
 
 ---
@@ -180,38 +120,6 @@ flowchart TD
     K --> L
 ```
 
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, i, flag;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    flag = 1;  // Assume prime
-    i = 2;
-    
-    // Check divisibility from 2 to num-1
-    while(i < num){
-        if(num % i == 0){
-            flag = 0;  // Found divisor - not prime
-            break;
-        }
-        i = i + 1;
-    }
-    
-    if(flag == 1){
-        printf("%d is Prime\n", num);
-    } else {
-        printf("%d is Not Prime\n", num);
-    }
-    
-    return 0;
-}
-```
-
 ---
 
 ### **A_4: Print Digits of Given Number**
@@ -246,29 +154,6 @@ flowchart TD
     C -->|No| G["End"]
 ```
 
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, digit;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    printf("Digits: ");
-    
-    // Extract and print each digit from right to left
-    while(num > 0){
-        digit = num % 10;  // Get last digit
-        printf("%d ", digit);
-        num = num / 10;  // Remove last digit
-    }
-    printf("\n");
-    
-    return 0;
-}
-```
 
 ---
 
@@ -319,31 +204,6 @@ flowchart TD
     H --> I["End"]
 ```
 
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, reverse, digit;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    reverse = 0;
-    
-    // Extract digits and build reverse number
-    while(num > 0){
-        digit = num % 10;  // Get last digit
-        reverse = (reverse * 10) + digit;  // Add to reverse
-        num = num / 10;  // Remove last digit
-    }
-    
-    printf("Reverse: %d\n", reverse);
-    
-    return 0;
-}
-```
-
 ---
 
 ## SECTION B: Number Properties
@@ -392,37 +252,6 @@ flowchart TD
     J --> K
 ```
 
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, i, sum;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    sum = 0;
-    i = 1;
-    
-    // Sum all divisors (except the number itself)
-    while(i < num){
-        if(num % i == 0){
-            sum = sum + i;  // Add divisor to sum
-        }
-        i = i + 1;
-    }
-    
-    if(sum == num){
-        printf("%d is a Perfect Number\n", num);
-    } else {
-        printf("%d is Not a Perfect Number\n", num);
-    }
-    
-    return 0;
-}
-```
-
 ---
 
 ### **B_2: Check if Prime Using Flag**
@@ -447,38 +276,6 @@ flag = 1 → Prime!
 - **Flag = 1:** Number is prime
 - **Flag = 0:** Number is not prime
 - As soon as we find a divisor, set flag to 0 and break
-
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, i, flag;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    flag = 1;  // Flag: 1=prime, 0=not prime
-    i = 2;
-    
-    // Check if number has any divisors
-    while(i < num){
-        if(num % i == 0){
-            flag = 0;  // Set flag to not prime
-            break;
-        }
-        i = i + 1;
-    }
-    
-    if(flag == 1){
-        printf("%d is Prime\n", num);
-    } else {
-        printf("%d is Not Prime\n", num);
-    }
-    
-    return 0;
-}
-```
 
 ---
 
@@ -529,37 +326,6 @@ flowchart TD
     I --> K["End"]
     J --> K
 ```
-
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, orig, reverse, digit;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    orig = num;  // Store original number
-    reverse = 0;
-    
-    // Build reverse number
-    while(num > 0){
-        digit = num % 10;  // Get last digit
-        reverse = (reverse * 10) + digit;
-        num = num / 10;
-    }
-    
-    if(orig == reverse){
-        printf("%d is a Palindrome\n", orig);
-    } else {
-        printf("%d is Not a Palindrome\n", orig);
-    }
-    
-    return 0;
-}
-```
-
 ---
 
 ## SECTION C: Advanced Number Properties
@@ -628,52 +394,6 @@ flowchart TD
     O --> P
 ```
 
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int num, orig, sum, digit, count;
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-    
-    orig = num;
-    sum = 0;
-    count = 0;
-    
-    // Count total digits
-    int temp = num;
-    while(temp > 0){
-        count = count + 1;
-        temp = temp / 10;
-    }
-    
-    // Calculate sum of each digit raised to power of count
-    temp = num;
-    while(temp > 0){
-        digit = temp % 10;
-        int pow = 1;
-        int p = count;
-        // Calculate digit^count using a while loop
-        while(p > 0){
-            pow = pow * digit;
-            p = p - 1;
-        }
-        sum = sum + pow;
-        temp = temp / 10;
-    }
-    
-    if(sum == orig){
-        printf("%d is an Armstrong Number\n", orig);
-    } else {
-        printf("%d is Not an Armstrong Number\n", orig);
-    }
-    
-    return 0;
-}
-```
-
 ---
 
 ### **C_2: Find HCF and LCM of Two Numbers**
@@ -718,39 +438,6 @@ flowchart TD
     H --> I["lcm = orig_a * orig_b / hcf"]
     I --> J["Print HCF and LCM"]
     J --> K["End"]
-```
-
-#### 💻 Code
-```c
-#include<stdio.h>
-
-int main(){
-    int a, b, orig_a, orig_b, hcf, lcm;
-    
-    printf("Enter first number: ");
-    scanf("%d", &a);
-    printf("Enter second number: ");
-    scanf("%d", &b);
-    
-    orig_a = a;
-    orig_b = b;
-    
-    // Find HCF using Euclidean algorithm
-    while(b != 0){
-        int temp = b;
-        b = a % b;
-        a = temp;
-    }
-    hcf = a;  // HCF is stored in a
-    
-    // Calculate LCM using formula
-    lcm = (orig_a * orig_b) / hcf;
-    
-    printf("HCF: %d\n", hcf);
-    printf("LCM: %d\n", lcm);
-    
-    return 0;
-}
 ```
 
 ---
