@@ -192,18 +192,28 @@ A pointer can also store the address of another pointer.
 This is called a pointer-to-pointer.
 
 ```c
-int a = 10;
-int *p = &a;
-int **q = &p;
+int x = 10;
+int *q = &x;
+int **p = &q;
 ```
 
 Here:
-- p stores the address of a,
-- q stores the address of p.
+- q stores the address of x,
+- p stores the address of q.
 
-This is called a pointer-to-pointer and is useful in advanced C programming.
+### When `*` and `&` cancel
+With the declarations above, these expressions simplify as follows:
 
-This concept is useful in advanced C programs, especially in dynamic memory and function parameter passing.
+| Expression | Simplifies to | Why |
+| --- | --- | --- |
+| `*&p` | `p` | `&p` gives the address of `p`; dereferencing it gives `p` back. |
+| `&*p` | `p` | `*p` is `q`; `&q` is the address stored in `p`. |
+| `&**p` | `*p` (that is, `q`) | `**p` is `x`; `&x` is the address stored in `q`, which is `*p`. |
+| `**&p` | `*p` (that is, `q`) | `&p` is the address of `p`; dereferencing twice gives `*p`. |
+| `&*&p` | `&p` | `&p` is dereferenced to `p`, then its address is taken again. |
+| `*&*p` | `*p` (that is, `q`) | `*p` is `q`; taking its address and dereferencing it returns `q`. |
+
+In short, `*` and `&` cancel when applied together in these type-correct expressions. The expressions involving `**p` require `p` and `q` to point to valid objects of the expected types.
 
 ---
 
