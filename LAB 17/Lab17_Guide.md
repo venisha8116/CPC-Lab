@@ -55,56 +55,26 @@ The pointer is not yet the value itself; it only points to where the value is st
 
 ## Accessing the Pointer and the Value at That Address
 
-There are different ways to access a pointer and the value it points to.
+| Expression | Name / Action | What it evaluates to | Common use case |
+| --- | --- | --- | --- |
+| `p` | The pointer variable | The memory address of `a` (for example, `0x7ffee3bf8a4c`) | Passing addresses to functions or checking for `NULL` |
+| `(void *)p` | Type-casting the pointer | The same address as `p`, represented as a generic object pointer rather than an `int *` | Passing a pointer to `printf` with `%p` |
+| `*p` | Dereferencing the pointer | The value stored at that address, such as `10` | Reading or modifying the original variable's value |
 
-### 1. Accessing the address stored in the pointer
-A pointer can be printed or used to know the memory address it contains.
-
-This is done by using the pointer variable itself.
-
-Example idea:
-- p gives the address stored in p.
-- If p points to a, then p is the address of a.
-
-Use the `%p` format specifier to print an address. Convert the pointer to `void *` when passing it to `printf`:
+Use `%p` to print an address, and pass the pointer as `(void *)`:
 
 ```c
 int a = 10;
 int *p = &a;
 
 printf("Address of a = %p\n", (void *)p);
+printf("Value of a = %d\n", *p);
 ```
 
-Use `%p` instead of `%d` or `%u` because `%d` expects an `int` and `%u` expects an `unsigned int`; neither format is for a pointer. Passing a pointer to `printf` with an integer format specifier has undefined behavior, and an address is not guaranteed to fit in an integer type. `%p` is the format specifier for pointers.
+Use `%p` instead of `%d` or `%u`: `%d` expects an `int` and `%u` expects an `unsigned int`, while `%p` is the format specifier for a pointer. Using an integer format for a pointer causes undefined behavior, and an address is not guaranteed to fit in an integer type.
 
-### 2. Accessing the value stored at the address
-To access the value pointed to by a pointer, we use the dereference operator.
-
-```c
-int a = 10;
-int *p = &a;
-
-printf("%d", *p);   // prints 10
-```
-
-Here:
-- *p gives the value stored at the address pointed to by p.
-- If p points to a, then *p is the same as a.
-
-This means:
-- a = 10
-- *p = 10
-
-### 3. Accessing values in different ways
-There are several common pointer access patterns:
-
-- *p: value at the address pointed by p
-- p: address stored in p
-- &a: address of variable a
-- *(p + i): value at the next position from pointer p
-- p[i]: same as *(p + i)
-
-These forms are especially useful for working with arrays.
+### Using pointers with arrays
+Pointer arithmetic and indexing can access array elements:
 
 ```c
 int arr[5] = {10, 20, 30, 40, 50};
@@ -114,8 +84,6 @@ printf("%d\n", *p);      // 10
 printf("%d\n", p[2]);    // 30
 printf("%d\n", *(p+3));  // 40
 ```
-
-This example shows that the same value can be accessed using direct dereferencing, array-style indexing, or pointer arithmetic.
 
 ---
 
