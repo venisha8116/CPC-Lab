@@ -66,6 +66,17 @@ Example idea:
 - p gives the address stored in p.
 - If p points to a, then p is the address of a.
 
+Use the `%p` format specifier to print an address. Convert the pointer to `void *` when passing it to `printf`:
+
+```c
+int a = 10;
+int *p = &a;
+
+printf("Address of a = %p\n", (void *)p);
+```
+
+Use `%p` instead of `%d` or `%u` because `%d` expects an `int` and `%u` expects an `unsigned int`; neither format is for a pointer. Passing a pointer to `printf` with an integer format specifier has undefined behavior, and an address is not guaranteed to fit in an integer type. `%p` is the format specifier for pointers.
+
 ### 2. Accessing the value stored at the address
 To access the value pointed to by a pointer, we use the dereference operator.
 
