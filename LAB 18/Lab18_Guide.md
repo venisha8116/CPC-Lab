@@ -2,8 +2,6 @@
 
 This lab uses functions for calculations, number checks, series, swapping, and string operations.
 
-This guide keeps all programs required by the lab manual. Explanations are limited to the concepts students need to complete those programs.
-
 ---
 
 ## What Is a Function?
