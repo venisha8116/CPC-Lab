@@ -1,6 +1,6 @@
 # Lab 18: Functions in C
 
-Functions organize work into named, reusable units. A function can receive input, perform a task, and optionally return a result. This lab uses functions for calculations, number checks, series, swapping, and string operations.
+This lab uses functions for calculations, number checks, series, swapping, and string operations.
 
 This guide keeps all programs required by the lab manual. Explanations are limited to the concepts students need to complete those programs.
 
@@ -8,7 +8,10 @@ This guide keeps all programs required by the lab manual. Explanations are limit
 
 ## What Is a Function?
 
-A function is a named set of instructions that does a specific task. A C program starts running from `main`, which can call other functions to perform their tasks.
+- A function is a named set of instructions that does a specific task.
+- Functions organize work into named, reusable units.
+- A function can receive input, perform a task, and optionally return a result.
+- A C program starts running from `main`, which can call other functions to perform their tasks.
 
 Using functions helps to give tasks clear names, reuse instructions, divide large problems into smaller parts, and make programs easier to check and update.
 
@@ -37,16 +40,19 @@ int add(int left, int right)        /* definition */
     return left + right;
 }
 
-int total = add(4, 7);              /* call: 4 and 7 are arguments */
+int total = add(4, 7);              /* inside main, call: 4 and 7 are arguments */
 ```
 
 The arguments in a call must match the function's expected parameters and their order.
 
 ## Return Values and Function Types
 
-The return type appears before the function name. Use `void` when a function does not give back a result. `return` gives back a result and ends that function call.
+- The return type appears before the function name.
+- Use `void` when a function does not give back a result. `return` gives back a result and ends that function call.
 
-Group functions by two questions: does it take input, and does it give back an answer?
+Group functions by two questions: 
+    - does it take input ?
+    - does it give back an answer?
 
 | Function kind | Input values | Result given back | Typical purpose |
 | --- | --- | --- | --- |
@@ -54,8 +60,6 @@ Group functions by two questions: does it take input, and does it give back an a
 | Parameters, no return value | One or more | None (`void`) | Use supplied data to print, update through pointers, or perform another action |
 | No parameters, returns a value | None | One value | Produce a result without receiving arguments |
 | Parameters and returns a value | One or more | One value | Calculate a result from supplied data |
-
-In this lab, the addition and maximum functions take input values and give back answers. The string reverse function changes the original text and gives back no result. The Fibonacci function prints its series, but does not use the number it returns; it would be clearer for it not to return a result.
 
 ## How Functions Are Provided
 
@@ -68,7 +72,8 @@ User-defined functions can be in the same file as `main` or grouped into a libra
 
 ## Arguments: Value and Reference-Like Updates
 
-1. **By value:** C gives the function a copy of the input. Changing that copy does not change the caller's number.
+1. **By value:**
+   - C gives the function a copy of the input. Changing that copy does not change the caller's number.
 
 ```c
 void set_to_zero(int value)
@@ -77,7 +82,11 @@ void set_to_zero(int value)
 }
 ```
 
-2. **Using a pointer:** Give the function the variable's address when it needs to change the caller's number. The function gets a copy of the address, but it still points to the caller's number. It can use `*` with the pointer to change that number. C does not have a separate "pass by reference" feature; this pointer method is often called that in class.
+1. **Using a pointer:**
+   - Give the function the variable's address when it needs to change the caller's number.
+   - The function gets a copy of the address, but it still points to the caller's number. 
+   - It can use `*` with the pointer to change that number. 
+   - C does not have a separate "pass by reference" feature; this pointer method is often called that in class.
 
 ```c
 void set_to_zero(int *value)
@@ -94,18 +103,20 @@ set_to_zero(&number);
 | `function(number)` | A copy of the number | No |
 | `function(&number)` | The number's address | Yes, using the pointer |
 
-The lab's value-based swap changes only local copies; its pointer-based swap changes the original variables. The address must be valid before a function uses it.
+The value-based swap changes only local copies; its pointer-based swap changes the original variables. The address must be valid before a function uses it.
 
 ## Arrays, Pointers, and Strings as Function Parameters
 
-When an array is given to a function, C does not copy the whole array. The function gets a way to access its first item. These two declarations mean the same thing for an integer array:
+- When an array is given to a function, C does not copy the whole array. 
+- The function gets a way to access its first item. 
+- These two declarations mean the same thing for an integer array:
 
 ```c
-int sum_values(int values[], int count);
-int sum_values(int *values, int count);
+int sum_values(int values[], int count); // passing array by call
+int sum_values(int *values, int count); // passing array by reference
 ```
 
-The function can access the first item, but does not know how many items are in the array. Pass the number of items separately and do not access items outside the array.
+The function can access the first item, but does not know how many items are in the array. Pass the number of items(size) separately.
 
 ```c
 int sum_values(int values[], int count)
@@ -119,9 +130,9 @@ int sum_values(int values[], int count)
 }
 ```
 
-Use a regular pointer or array input when the function needs to change items; those changes also affect the caller's array. Arrays and pointers are related, but are not identical.
+- Use a regular pointer or array input when the function needs to change items; those changes also affect the caller's array.
 
-A C string is a character array that ends with `\0`. A string parameter can use `char *` to give the function access to its characters. Leave enough room in the destination array when copying or joining text; a pointer does not tell the function how much room is available.
+- A string parameter can use `char *` to give the function access to its characters. Leave enough room in the destination array when copying or joining text; a pointer does not tell the function how much room is available.
 
 ## Scope
 
@@ -170,7 +181,9 @@ A typical guard looks like this:
 | `strcmp` | Compares text |
 | `strrev`  | Reverses string |
 
-These functions are provided by `<string.h>` and expect text ending in `\0`. The destination array needs enough room for the result and its ending `\0`. Program C_1 makes similar functions without using the library's string functions; it counts, copies, joins, compares, and reverses characters with loops.
+These functions are provided by `<string.h>` and expect text ending in `\0`. The destination array needs enough room for the result and its ending `\0`.
+
+Program C_1 makes similar functions without using the library's string functions; it counts, copies, joins, compares, and reverses characters with loops.
 
 ---
 
