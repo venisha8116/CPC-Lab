@@ -1,4 +1,3 @@
-#ifndef NUMBERLIB_H
 #define NUMBERLIB_H
 
 int isPrime(int n)
@@ -64,7 +63,3 @@ int isPerfect(int n)
             sum += i;
     }
 
-    return sum == n;
-}
-
-#endif

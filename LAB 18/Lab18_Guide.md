@@ -145,19 +145,11 @@ For this lab:
 
 For example, `custom_math_library.h` can contain declarations such as `int is_prime(int number);`.
 
-### Header Guards
-
-Header guards help prevent the same header from being included more than once.
-
-A typical guard looks like this:
-
 ```c
-#ifndef CUSTOM_LIBRARY_H
 #define CUSTOM_LIBRARY_H
 
 /* Public function declarations go here. */
 
-#endif
 ```
 
 ## String Functions in C
