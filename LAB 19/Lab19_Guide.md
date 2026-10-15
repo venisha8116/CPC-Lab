@@ -77,7 +77,7 @@ flowchart TD
   4. Display both results for comparison.
 - **A_2 — Print array elements**
   1. Read an array and its size.
-  2. Recursively print the current element and move to the next index.
+  2. Print the current element and move to the next index.
   3. Stop when the index reaches the array size.
   4. Print the elements again using iteration.
 - **A_3 — String library operations**
