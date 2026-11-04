@@ -30,3 +30,4 @@ int main() {
         printf("Author: %s");
         printf("Publication: %s\n", books[i].publication);
     }
+}
