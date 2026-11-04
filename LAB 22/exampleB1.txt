@@ -1,0 +1,2 @@
+Hello World!
+This is example file for Lab 22 B1.

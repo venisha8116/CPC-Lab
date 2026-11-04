@@ -1,0 +1,2 @@
+Hello World from file 2!
+This is file2 for Lab 22 B3.
