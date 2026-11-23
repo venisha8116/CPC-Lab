@@ -129,7 +129,7 @@ int main() {
     writeToFile(filename, students, noOfStudents);
     findHighBacklogs(filename);
 
-    // PART 23-B 
+    // 23-B 
     int targetRoll;
     printf("\nEnter the roll number whose backlog you want to change to 3 : ");
     scanf("%d", &targetRoll);
