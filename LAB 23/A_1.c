@@ -68,7 +68,7 @@ int main(){
 
 	struct Student student;
 
-	// Reading the rest of the data in file (removed '&' before student.Name and fixed spacing/tabs)
+	// Reading the rest of the data in file 
 	while((fscanf(fptr, " %d\t%[^\t]\t%d", &student.Roll_Number, student.Name, &student.Backlog)) != EOF){
 		if(student.Backlog > 5){
 			printf("Roll Number : %d ----- Name : %s has more than 5 backlogs.\n", student.Roll_Number, student.Name);
